@@ -32,9 +32,10 @@ This document covers essential safety information for converting a 1992 Ford Esc
 
 #### Required Personal Protective Equipment (PPE)
 
-1. **Class 00 or Class 0 Insulated Gloves**
-   - Voltage rating: Minimum 500V
-   - Must be tested annually
+1. **Class 0 or Higher Insulated Gloves**
+   - Voltage rating: Minimum 1000V (Class 0)
+   - System operates at 360V nominal, 403V max (requires 1.5x safety margin)
+   - Must be tested annually per ASTM F496
    - Inspect before each use for damage
    - Use with leather protector gloves
    - Cost: $150-$300
@@ -79,10 +80,10 @@ This document covers essential safety information for converting a 1992 Ford Esc
    - Keep key on your person
 
 3. **Verify De-energization**:
-   - Wait 5 minutes for capacitor discharge
-   - Use HV detector to verify no voltage
-   - Test at multiple points
-   - Short circuit HV to ground using insulated tool with HV-rated resistor
+   - Wait minimum 5 minutes for capacitor discharge
+   - Use HV detector to verify no voltage at multiple points
+   - Measure voltage with high-voltage multimeter (<5V safe)
+   - If needed, discharge capacitors using proper discharge tool (insulated stick with 1kΩ, 50W resistor)
 
 4. **Ground if Necessary**:
    - For certain procedures, ground HV bus to chassis
@@ -141,7 +142,7 @@ Nissan Leaf uses lithium manganese oxide batteries:
 - **Fire**: Difficult to extinguish, produces toxic fumes
 - **Electrical**: High voltage and current
 - **Chemical**: Electrolyte is corrosive and flammable
-- **Physical**: Heavy modules (4 lbs each)
+- **Physical**: Heavy modules (~13.5 lbs each, 48 modules total = ~650 lbs)
 
 ### Battery Handling Procedures
 
@@ -175,10 +176,13 @@ Nissan Leaf uses lithium manganese oxide batteries:
 
 **If Battery Fire Occurs**:
 
-1. **Evacuate**: Get everyone away from vehicle
+1. **Evacuate Immediately**: Get everyone away from vehicle
 2. **Call 911**: Tell them it's an electric vehicle battery fire
-3. **Do Not Fight Fire** unless trained and equipped
-4. **Class D Extinguisher** or large amounts of water (if safe)
+3. **Do Not Attempt to Fight Fire**: Leave to professional firefighters
+   - Only attempt suppression if: fire is very small, you have proper training and equipment, and you have a clear escape route
+4. **If Attempting Suppression** (trained personnel only):
+   - Class D extinguisher for small fires
+   - Large amounts of water (if electrically safe and fire is accessible)
 5. **Toxic Fumes**: Stay upwind, wear respirator if available
 6. **Thermal Runaway**: Can reignite hours later; monitor
 
@@ -279,7 +283,8 @@ Nissan Leaf uses lithium manganese oxide batteries:
 **When Fabricating Mounts**:
 - Welding near battery = EXTREME DANGER
 - **ALWAYS** disconnect batteries before welding
-- Wait 10 minutes after disconnect
+- Wait minimum 10 minutes after disconnect
+- **VERIFY de-energization with multimeter** before welding
 - Ground welding current path away from HV components
 - Fire extinguisher on hand
 - Adequate ventilation
@@ -297,7 +302,8 @@ Nissan Leaf uses lithium manganese oxide batteries:
 - Lithium salt electrolyte (LiPF6 in organic solvents)
 - Corrosive to skin and eyes
 - Flammable
-- Reacts with water (releases HF gas - highly toxic)
+- Reacts with water to produce hydrofluoric acid (HF) in solution
+- At high temperatures or during fire, can release toxic HF gas
 
 **In Case of Leak**:
 - Evacuate area
@@ -321,9 +327,11 @@ Always read and follow Safety Data Sheets (SDS).
 ### Fire Extinguisher Requirements
 
 **Type and Location**:
-- **Class C** (electrical) rated
+- **ABC or BC rated** (electrical fires)
 - **5-10 lb** capacity minimum
 - Mounted in vehicle cabin (easily accessible)
+- Note: ABC extinguishers are suitable for general electrical fires but NOT for lithium battery fires
+- For battery fires in workshop, use Class D extinguisher
 - Check monthly (pressure gauge in green)
 - Know how to use (PASS method: Pull, Aim, Squeeze, Sweep)
 

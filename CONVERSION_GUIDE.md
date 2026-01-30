@@ -65,9 +65,18 @@ This guide provides detailed instructions for converting a 1992 Ford Escort from
 ### Step 1.2: Weight Calculations
 
 - Original Ford Escort curb weight: ~2,200 lbs
-- Nissan Leaf battery pack weight: ~650 lbs
-- Nissan Leaf motor weight: ~130 lbs
-- Expected final weight: ~2,400-2,600 lbs
+- **Removed components**: ~380-580 lbs
+  - Engine and transmission: ~300-400 lbs
+  - Fuel tank, lines, and fuel: ~50-80 lbs
+  - Exhaust system: ~30-50 lbs
+  - Cooling system (radiator, hoses): ~20-30 lbs
+  - Emissions equipment: ~10-20 lbs
+- **Added components**:
+  - Nissan Leaf battery pack: ~650 lbs
+  - Nissan Leaf motor: ~130 lbs
+  - Controllers and charging: ~100 lbs
+  - Battery boxes and mounts: ~100 lbs
+- **Expected final weight**: ~2,400-2,600 lbs
 
 ### Step 1.3: Design Decisions
 
@@ -82,7 +91,7 @@ This guide provides detailed instructions for converting a 1992 Ford Escort from
 - Verify all components are functional
 - Test motor and controller if possible before installation
 
-## Phase 2: Removal of ICE Components
+## Phase 2: Removal of Internal Combustion Engine (ICE) Components
 
 ### Step 2.1: Preparation
 
@@ -91,16 +100,25 @@ This guide provides detailed instructions for converting a 1992 Ford Escort from
 3. Remove hood for better access
 4. Label and photograph all connections before removal
 
-### Step 2.2: Remove Engine and Transmission
+### Step 2.2: Remove Engine
 
-1. Disconnect all electrical connections
+**Note**: If keeping the manual transmission for the conversion, only the engine will be removed. If using direct drive, remove both engine and transmission together.
+
+**For keeping transmission** (recommended for this conversion):
+1. Disconnect all electrical connections to engine
 2. Remove exhaust system from manifold back
 3. Disconnect fuel lines and vacuum hoses
 4. Remove radiator and cooling system
-5. Unbolt transmission from driveshaft
+5. Unbolt engine from transmission (remove bell housing bolts)
 6. Support engine with hoist
 7. Remove engine mount bolts
-8. Carefully lift engine and transmission out as a unit
+8. Carefully lift engine out, leaving transmission in place
+
+**For direct drive** (removing both):
+1. Follow steps above but also:
+2. Unbolt transmission from driveshaft
+3. Remove transmission mounts
+4. Lift engine and transmission out as a unit
 
 ### Step 2.3: Remove Fuel System
 
@@ -186,8 +204,8 @@ Nissan Leaf battery modules can be configured in various ways:
 1. Create mounting frames for battery modules
 2. Ensure batteries are securely fastened (critical for safety)
 3. Connect modules in series to achieve desired voltage
-   - Nissan Leaf modules: typically 7.6V each
-   - Target: 360V for full system (matching Leaf voltage)
+   - Nissan Leaf modules: 7.5V nominal each (3.75V per cell × 2 cells)
+   - 48 modules in series = 360V nominal (403V fully charged)
 4. Install battery management system (BMS) sensors on each module
 5. Route high-voltage cables in protected conduit
 
@@ -285,13 +303,18 @@ Options:
 3. Inspect high-voltage cable routing
 4. Ensure no exposed high-voltage conductors
 5. Verify proper fusing and circuit protection
+6. **Perform insulation resistance test**:
+   - Using megohmmeter (500V DC test voltage)
+   - With HV system de-energized
+   - Measure HV+ to chassis: >500kΩ (industry standard: >500Ω/V = 200kΩ minimum)
+   - Measure HV- to chassis: >500kΩ
 
 ### Step 7.2: Initial Power-Up
 
-1. Put on high-voltage safety equipment
+1. Put on high-voltage safety equipment (Class 0 insulated gloves, safety glasses)
 2. Close main contactor with controller disabled
 3. Measure battery pack voltage
-4. Check for voltage leaks to chassis (should be >500kΩ)
+4. Verify insulation resistance as described in Step 7.1
 5. Enable controller
 6. Check for error codes
 

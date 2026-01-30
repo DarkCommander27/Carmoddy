@@ -320,7 +320,9 @@
 
 **Subtotal**: $1,520-$3,200
 
-### **Total Estimated Cost**: $6,520-$15,850
+### **Total Estimated Cost**: $6,750-$16,250
+
+**Including spares**: $6,980-$16,650
 
 *Note: Costs vary significantly based on source (new vs. salvage), location, and availability. Prices shown are estimates and may fluctuate.*
 

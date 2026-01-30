@@ -20,13 +20,16 @@ This document provides wiring diagrams and electrical integration instructions f
                                                |
                                                +--[Main Contactor]--+
                                                                     |
-                         +-----------------------------------------+
-                         |                                         |
-                    [On-Board Charger]                      [PDM/Inverter]
-                         |                                         |
-                    [J1772 Port]                            [Motor EM57]
-                    
-       +--[DC-DC Converter]--[12V Battery]--[12V Accessories]
+                         +------------------------------------------+
+                         |                                          |
+                    [On-Board Charger]                      [Inverter/PDM]
+                         |                                          |
+                    [J1772 Port]                               [Motor EM57]
+                                                                   |
+       +--[DC-DC Converter]--[12V Battery]--[12V Accessories]     |
+       |                                                           |
+       +-----------------------------------------------------------+
+           (Connected to HV+ line from main contactor)
 ```
 
 ## High-Voltage System Wiring
@@ -92,7 +95,9 @@ This document provides wiring diagrams and electrical integration instructions f
 - Open loop disables high-voltage system
 - Use normally-closed micro switches
 
-## Motor Controller (PDM) Connections
+### Motor Inverter/Controller (PDM) Connections
+
+**Note**: PDM (Power Distribution Module) refers to the Nissan Leaf's motor controller/inverter unit.
 
 ### PDM Input/Output Table
 
@@ -214,7 +219,7 @@ Each battery module requires:
 |-----------|------------|---------|
 | Cell over-voltage (>4.2V) | Open ENABLE_OUT | Contactor opens, HV disconnected |
 | Cell under-voltage (<2.8V) | Open ENABLE_OUT | Contactor opens, HV disconnected |
-| Over-temperature (>55°C) | Open ENABLE_OUT | Contactor opens, HV disconnected |
+| Over-temperature (>60°C) | Open ENABLE_OUT | Contactor opens, HV disconnected |
 | Cell imbalance (>100mV) | Warning light | Continue operation, check needed |
 | Communication loss | Open ENABLE_OUT | Safe shutdown |
 
@@ -289,7 +294,8 @@ Options:
 **Voltage Divider**:
 - Input: 0-450V DC
 - Output: 0-5V DC
-- Ratio: 90:1
+- Resistor Ratio: R1:R2 = 89:1 (where R2 is the lower resistor to ground)
+- For example: R1 = 890kΩ, R2 = 10kΩ
 - Resistors: High-voltage rated, 1% tolerance
 
 ### Current Meter (Ammeter)
@@ -301,7 +307,8 @@ Options:
 **Current Shunt**:
 - Rating: 500A, 50mV
 - Location: In HV+ line near battery
-- Display: 50mV = 500A (10:1 ratio)
+- Display: Shows current where 50mV across shunt = 500A
+- Conversion: 0.1mV per amp (or 10A per mV)
 
 ### Temperature Sensors
 
@@ -338,12 +345,13 @@ Each with appropriate resistor for LED current limiting.
 
 ### Grounding Strategy
 
-1. **HV Ground**: Battery negative to chassis (one point)
-2. **LV Ground**: 12V battery negative to chassis (one point)
-3. **Signal Ground**: All low-voltage signals to common ground bus
-4. **Motor Case**: Bonded to chassis
+1. **HV Ground**: Battery negative to chassis at single point (near battery)
+2. **LV Ground**: 12V battery negative to chassis at single point
+3. **Ground Bonding**: HV and LV grounds should be bonded at the same chassis location to prevent ground potential differences
+4. **Signal Ground**: All low-voltage signals reference common ground bus
+5. **Motor Case**: Bonded to chassis for safety
 
-**Important**: Single-point grounding prevents ground loops.
+**Important**: Single-point grounding strategy with HV and LV grounds bonded together prevents ground loops and dangerous voltage differences.
 
 ### Cable Shielding
 
